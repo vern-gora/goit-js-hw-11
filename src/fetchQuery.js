@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const BASE_URL = 'https://pixabay.com/api/';
-const KEY = '37188665-acb3321e0243d96308bf1f96a';
+const KEY = '37777153-247ca5bc8290e5f945f6d08af';
 const PER_PAGE = 40;
 
 async function fetchQuery(query, page) {
