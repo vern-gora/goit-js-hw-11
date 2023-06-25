@@ -32,17 +32,18 @@ function onSubmit(event) {
           Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
           gallery.insertAdjacentHTML('beforeend', markup(response));
           lightbox.refresh();
+          observer.observe(marker);
+          const lastPage = Math.ceil(response.data.totalHits / PER_PAGE);
+          if (page === lastPage) {
+            observer.unobserve(marker);
+          }
         } else {
           Notify.warning(
             'Sorry, there are no images matching your search query. Please try again.'
           );
         }
       })
-      .catch(error => console.log(error))
-      .finally(() => {
-        lightbox.refresh();
-        observer.observe(marker);
-      });
+      .catch(error => console.log(error));
   } else {
     Notify.info(
       `It seems you didn't write enything, please specify what exactly you are looking for`
