@@ -32,10 +32,10 @@ function onSubmit(event) {
           Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
           gallery.insertAdjacentHTML('beforeend', markup(response));
           lightbox.refresh();
+          observer.observe(marker);
           if (page === lastPage) {
             observer.unobserve(marker);
           }
-           observer.observe(marker);
         } else {
           Notify.warning(
             'Sorry, there are no images matching your search query. Please try again.'
